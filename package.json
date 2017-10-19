@@ -1,0 +1,43 @@
+{
+  "name": "cxcloud-demo-facade",
+  "version": "0.1.0",
+  "description": "CXCloud Facade Demo",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "format": "prettier --write 'src/**/*.ts'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.ts": ["prettier --write", "git add"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smilehouse/cxcloud-demo-facade.git"
+  },
+  "author": "CXCloud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smilehouse/cxcloud-demo-facade/issues"
+  },
+  "homepage": "https://github.com/smilehouse/cxcloud-demo-facade#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config": "^1.27.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.5",
+    "@types/config": "0.0.33",
+    "@types/cors": "^2.8.1",
+    "@types/express": "^4.0.37",
+    "@types/node": "^8.0.45",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.7.4",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  }
+}
