@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/smilehouse/cxcloud-demo-facade#readme",
   "dependencies": {
+    "@cxcloud/facade": "^1.0.3",
     "body-parser": "^1.18.2",
     "config": "^1.27.0",
     "cors": "^2.8.4",
