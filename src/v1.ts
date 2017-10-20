@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { Commerce } from '@cxcloud/facade';
+import { Categories } from '@cxcloud/facade/commerce';
 
 export const router = Router();
 
 router.get('/categories', (req, res) => {
-  Commerce.Categories.fetchAll().then(cats => res.json(cats));
+  Categories.fetchAll().then(cats => res.json(cats));
 });
