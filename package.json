@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts | bunyan",
+    "start:production": "node dist/index.js",
     "dev": "nodemon --ignore dist --ext js,ts,json --exec 'ts-node' src/index.ts | bunyan",
     "format": "prettier --write 'src/**/*.ts'",
     "precommit": "lint-staged"
