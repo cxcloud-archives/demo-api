@@ -27,12 +27,13 @@
   },
   "homepage": "https://github.com/smilehouse/cxcloud-demo-facade#readme",
   "dependencies": {
-    "@cxcloud/facade": "^1.0.5",
+    "@cxcloud/facade": "^1.0.6",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
     "config": "^1.27.0",
     "cors": "^2.8.4",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "express-api-error-handler": "^1.1.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
