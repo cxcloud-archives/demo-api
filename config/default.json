@@ -1,5 +1,5 @@
 {
-  "port": 3000,
+  "port": 4003,
   "store": {
     "defaultCurrency": "EUR",
     "supportedCurrencies": ["EUR", "USD", "GBP"]
