@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Categories, Products } from '@cxcloud/facade/dist/commerce';
+import { Categories, Products, Customers } from '@cxcloud/facade/dist/commerce';
 
 export const router = Router();
 
@@ -15,6 +15,13 @@ router.get('/products/byCategory/:categoryId', (req, res, next) => {
 
 router.get('/products/:productId', (req, res, next) => {
   Products.findById(req.params.productId)
+    .then(result => res.json(result))
+    .catch(next);
+});
+
+router.post('/login', (req, res, next) => {
+  const { username, password } = req.body;
+  Customers.login(username, password)
     .then(result => res.json(result))
     .catch(next);
 });
