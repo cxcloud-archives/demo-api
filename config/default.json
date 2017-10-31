@@ -6,5 +6,9 @@
   },
   "debug": {
     "logLevel": "debug"
+  },
+  "commerceTools": {
+    "authHost": "https://auth.sphere.io",
+    "apiHost": "https://api.sphere.io"
   }
 }
