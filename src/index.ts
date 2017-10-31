@@ -3,6 +3,7 @@ import * as cors from 'cors';
 import * as config from 'config';
 import * as bodyParser from 'body-parser';
 import { logger } from './utils/logger';
+import { attachAuthToken } from './utils/auth-middleware';
 import { router as v1Router } from './v1';
 
 const { errorHandler } = require('express-api-error-handler');
@@ -13,6 +14,7 @@ let server: any;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(attachAuthToken);
 app.disable('x-powered-by');
 
 app.get('/api', (req, res) => {
