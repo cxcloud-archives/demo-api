@@ -24,9 +24,15 @@ router.get('/products/:productId', (req, res, next) => {
     .catch(next);
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/auth/user', (req, res, next) => {
   const { username, password } = req.body;
-  Customers.login(username, password)
+  Customers.login(username, password, res.locals.authToken)
+    .then(result => res.json(result))
+    .catch(next);
+});
+
+router.post('/auth/anonymous', (req, res, next) => {
+  Customers.loginAnonymously()
     .then(result => res.json(result))
     .catch(next);
 });
