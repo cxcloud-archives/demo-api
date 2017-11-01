@@ -10,6 +10,7 @@ COPY package.json /data/cxcloud-facade/
 COPY tsconfig.json /data/cxcloud-facade/
 COPY package-lock.json /data/cxcloud-facade/
 
+ENV NPM_CONFIG_REGISTRY=https://npm-proxy.fury.io/wSnsDT8KtqyisU81uTpv/cxcloud/
 RUN npm install --silent
 RUN npm run build
 
