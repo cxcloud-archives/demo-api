@@ -3,7 +3,8 @@ import {
   Categories,
   Products,
   Customers,
-  Carts
+  Carts,
+  Shipping
 } from '@cxcloud/facade/dist/commerce';
 
 export const router = Router();
@@ -33,6 +34,12 @@ router.post('/auth/user', (req, res, next) => {
 
 router.post('/auth/anonymous', (req, res, next) => {
   Customers.loginAnonymously()
+    .then(result => res.json(result))
+    .catch(next);
+});
+
+router.get('/shippingMethods', (req, res, next) => {
+  Shipping.fetchMethods()
     .then(result => res.json(result))
     .catch(next);
 });
