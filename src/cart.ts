@@ -16,7 +16,7 @@ export const router = Router({
 router.post('/lineItems', (req, res, next) => {
   Carts.addLineItems(
     req.params.cartId,
-    Number(req.params.cartVersion),
+    req.params.cartVersion,
     req.body,
     res.locals.authToken
   )
@@ -32,7 +32,7 @@ router.post('/lineItems', (req, res, next) => {
 router.delete('/lineItems', (req, res, next) => {
   Carts.removeLineItem(
     req.params.cartId,
-    Number(req.params.cartVersion),
+    req.params.cartVersion,
     req.body,
     res.locals.authToken
   )
@@ -49,7 +49,7 @@ router.delete('/lineItems', (req, res, next) => {
 router.put('/lineItems', (req, res, next) => {
   Carts.changeLineItemQuantity(
     req.params.cartId,
-    Number(req.params.cartVersion),
+    req.params.cartVersion,
     req.body,
     res.locals.authToken
   )
