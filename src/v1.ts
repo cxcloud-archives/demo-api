@@ -6,6 +6,7 @@ import {
   Carts,
   Shipping
 } from '@cxcloud/facade/dist/commerce';
+import { router as cartRouter } from './cart';
 
 export const router = Router();
 
@@ -56,54 +57,4 @@ router.get('/carts/:cartId', (req, res, next) => {
     .catch(next);
 });
 
-/**
- * {
- *   productId: string,
- *   variantId: number,
- *   quantity: number
- * }
- * or array of these
- */
-router.post('/carts/:cartId/:cartVersion', (req, res, next) => {
-  Carts.addLineItems(
-    req.params.cartId,
-    Number(req.params.cartVersion),
-    req.body,
-    res.locals.authToken
-  )
-    .then(result => res.json(result))
-    .catch(next);
-});
-
-/**
- * {
- *   lineItemId: string
- * }
- */
-router.delete('/carts/:cartId/:cartVersion', (req, res, next) => {
-  Carts.removeLineItem(
-    req.params.cartId,
-    Number(req.params.cartVersion),
-    req.body,
-    res.locals.authToken
-  )
-    .then(result => res.json(result))
-    .catch(next);
-});
-
-/**
- * {
- *   lineItemId: string,
- *   quantity: number
- * }
- */
-router.put('/carts/:cartId/:cartVersion', (req, res, next) => {
-  Carts.changeLineItemQuantity(
-    req.params.cartId,
-    Number(req.params.cartVersion),
-    req.body,
-    res.locals.authToken
-  )
-    .then(result => res.json(result))
-    .catch(next);
-});
+router.use('/carts/:cartId/:cartVersion', cartRouter);
