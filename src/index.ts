@@ -29,11 +29,17 @@ app.get('/api', (req, res) => {
 // Load Controllers
 const v1 = express.Router();
 Server.buildServices(v1, ...controllers);
-Server.swagger(
-  v1,
-  path.resolve(__dirname, '../dist/swagger.json'),
-  '/api-docs'
-);
+
+// only run swagger in development mode
+if (process.env.NODE_ENV !== 'production') {
+  Server.swagger(
+    v1,
+    path.resolve(__dirname, '../dist/swagger.json'),
+    '/api-docs',
+    `localhost:${port}`,
+    ['http']
+  );
+}
 
 app.use('/api/v1', v1);
 

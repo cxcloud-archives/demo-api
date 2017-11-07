@@ -1,6 +1,6 @@
 {
   "swagger": {
-    "basePath": "api/v1",
+    "basePath": "/api/v1",
     "outputDirectory": "./dist",
     "entryFile": "./src/index.ts",
     "name": "CXCloud Facade Demo API",
