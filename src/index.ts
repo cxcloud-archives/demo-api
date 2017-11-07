@@ -6,7 +6,6 @@ import * as bodyParser from 'body-parser';
 import { Server } from 'typescript-rest';
 import { logger } from './utils/logger';
 import { attachAuthToken } from './utils/auth-middleware';
-import { router as v1Router } from './v1';
 import controllers from './controllers';
 
 const { errorHandler } = require('express-api-error-handler');

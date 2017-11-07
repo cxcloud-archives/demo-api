@@ -8,6 +8,7 @@ import {
   Context,
   ServiceContext
 } from 'typescript-rest';
+import { Tags } from 'typescript-rest-swagger';
 import { Carts } from '@cxcloud/facade/dist/commerce';
 import {
   Cart,
@@ -25,12 +26,14 @@ interface ISetShippingMethod {
 export class CartsController {
   @Context ctx: ServiceContext;
 
+  @Tags('carts')
   @POST
   createCart(): Promise<Cart> {
     return Carts.create(this.ctx.response.locals.authToken);
   }
 
   @Path(':id')
+  @Tags('carts')
   @GET
   getCart(@PathParam('id') id: string): Promise<Cart> {
     return Carts.findById(id, this.ctx.response.locals.authToken);
@@ -44,6 +47,7 @@ export class CartController {
   @PathParam('version') cartVersion: number;
 
   @Path('/lineItems')
+  @Tags('carts')
   @POST
   addLineItems(body: IAddLineItem): Promise<Cart> {
     return Carts.addLineItems(
@@ -55,6 +59,7 @@ export class CartController {
   }
 
   @Path('/lineItems')
+  @Tags('carts')
   @DELETE
   removeLineItem(body: IRemoveLineItem): Promise<Cart> {
     return Carts.removeLineItem(
@@ -66,6 +71,7 @@ export class CartController {
   }
 
   @Path('/lineItems')
+  @Tags('carts')
   @PUT
   changeLineItemQuantity(body: IChangeLineItemQuantity): Promise<Cart> {
     return Carts.changeLineItemQuantity(
@@ -77,6 +83,7 @@ export class CartController {
   }
 
   @Path('/shippingAddress')
+  @Tags('carts')
   @PUT
   setShippingAddress(body: Address): Promise<Cart> {
     return Carts.setShippingAddress(
@@ -88,6 +95,7 @@ export class CartController {
   }
 
   @Path('/billingAddress')
+  @Tags('carts')
   @PUT
   setBillingAddress(body: Address): Promise<Cart> {
     return Carts.setBillingAddress(
@@ -99,6 +107,7 @@ export class CartController {
   }
 
   @Path('/shippingMethod')
+  @Tags('carts')
   @PUT
   setShippingMethod(body: ISetShippingMethod): Promise<Cart> {
     const { shippingMethodId } = body;

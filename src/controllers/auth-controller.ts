@@ -1,4 +1,5 @@
 import { POST, Path, Context, ServiceContext } from 'typescript-rest';
+import { Tags } from 'typescript-rest-swagger';
 import { Customers } from '@cxcloud/facade/dist/commerce';
 import {
   SignInResult,
@@ -15,6 +16,7 @@ export class AuthController {
   @Context ctx: ServiceContext;
 
   @Path('/user')
+  @Tags('auth')
   @POST
   loginUser(body: ILogin): Promise<SignInResult> {
     const { username, password } = body;
@@ -26,6 +28,7 @@ export class AuthController {
   }
 
   @Path('/anonymous')
+  @Tags('auth')
   @POST
   loginAnonymous(): Promise<AnonymousSignInResult> {
     return Customers.loginAnonymously();
