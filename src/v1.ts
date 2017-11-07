@@ -7,7 +7,6 @@ import {
   Shipping,
   Orders
 } from '@cxcloud/facade/dist/commerce';
-import { router as cartRouter } from './cart';
 
 export const router = Router();
 
@@ -47,26 +46,6 @@ router.post('/auth/anonymous', (req, res, next) => {
     .then(result => res.json(result))
     .catch(next);
 });
-
-// ==========================================
-// Carts
-// ==========================================
-
-router.post('/carts', (req, res, next) => {
-  Carts.create(res.locals.authToken)
-    .then(result => res.json(result))
-    .catch(next);
-});
-
-router.get('/carts/:cartId', (req, res, next) => {
-  Carts.findById(req.params.cartId, res.locals.authToken)
-    .then(result => res.json(result))
-    .catch(next);
-});
-
-// Cart operations are quite verbose, so putting them
-// in their own space
-router.use('/carts/:cartId/:cartVersion', cartRouter);
 
 // ==========================================
 // Orders & Shipping
