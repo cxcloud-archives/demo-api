@@ -4,7 +4,7 @@
   "description": "CXCloud Facade Demo",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run swagger",
     "start": "ts-node src/index.ts | bunyan",
     "start:production": "node dist/index.js",
     "dev": "nodemon --ignore dist --ext js,ts,json --exec 'ts-node' src/index.ts | bunyan",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/smilehouse/cxcloud-demo-facade#readme",
   "dependencies": {
-    "@cxcloud/facade": "^1.2.2",
+    "@cxcloud/facade": "^1.2.3",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
     "config": "^1.27.0",

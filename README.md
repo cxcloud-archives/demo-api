@@ -25,3 +25,16 @@ If a config file for current environment doesn't exist, the `default.json` file 
 Fore more information about the configuration system, please see [`node-config`](https://github.com/lorenwest/node-config) module.
 
 To see the list of available configuration keys, see [CXCloud Facade](https://github.com/cxcloud/cxcloud-facade).
+
+## Deploy
+
+To deploy the project's Docker container to `now` service:
+
+``` sh
+now --docker -e NODE_ENV=production
+now alias [URL copied from previous command] demo.cxcloud.xyz
+```
+
+## REST API Documentation
+
+If you have run the project with a `NODE_ENV` set to any value other than `production`, a Swagger API Documentation will be available under the `/api/v1/api-docs` URL.
