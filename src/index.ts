@@ -1,10 +1,13 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as config from 'config';
+import * as path from 'path';
 import * as bodyParser from 'body-parser';
+import { Server } from 'typescript-rest';
 import { logger } from './utils/logger';
 import { attachAuthToken } from './utils/auth-middleware';
 import { router as v1Router } from './v1';
+import controllers from './controllers';
 
 const { errorHandler } = require('express-api-error-handler');
 
@@ -17,14 +20,25 @@ app.use(bodyParser.json());
 app.use(attachAuthToken);
 app.disable('x-powered-by');
 
+// Health Check
 app.get('/api', (req, res) => {
   res.json({
     health: 'OK'
   });
 });
 
-app.use('/api/v1', v1Router);
+// Load Controllers
+const v1 = express.Router();
+Server.buildServices(v1, ...controllers);
+Server.swagger(
+  v1,
+  path.resolve(__dirname, '../dist/swagger.json'),
+  '/api-docs'
+);
 
+app.use('/api/v1', v1);
+
+// Final Handler
 app.use(
   errorHandler({
     log: ({ err, req, res, body }: any) => {
