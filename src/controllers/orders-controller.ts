@@ -6,7 +6,7 @@ import {
   Context,
   ServiceContext
 } from 'typescript-rest';
-import { Tags } from 'typescript-rest-swagger';
+import { Tags, Security } from 'typescript-rest-swagger';
 import { Orders } from '@cxcloud/facade/dist/commerce';
 import {
   Order,
@@ -23,6 +23,7 @@ export class OrdersController {
   @Context ctx: ServiceContext;
 
   @Tags('orders')
+  @Security('token')
   @POST
   createOrder(body: ICreateOrder): Promise<Order> {
     const { cartId, cartVersion } = body;
@@ -34,6 +35,7 @@ export class OrdersController {
   }
 
   @Tags('orders')
+  @Security('token')
   @GET
   getOrders(): Promise<PaginatedOrderResult> {
     return Orders.fetchAll(this.ctx.response.locals.authToken);
@@ -41,6 +43,7 @@ export class OrdersController {
 
   @Path('/:id')
   @Tags('orders')
+  @Security('token')
   @GET
   getOrderById(@PathParam('id') orderId: string): Promise<Order> {
     return Orders.findById(orderId, this.ctx.response.locals.authToken);

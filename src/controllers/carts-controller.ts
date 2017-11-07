@@ -8,7 +8,7 @@ import {
   Context,
   ServiceContext
 } from 'typescript-rest';
-import { Tags } from 'typescript-rest-swagger';
+import { Tags, Security } from 'typescript-rest-swagger';
 import { Carts } from '@cxcloud/facade/dist/commerce';
 import {
   Cart,
@@ -27,6 +27,7 @@ export class CartsController {
   @Context ctx: ServiceContext;
 
   @Tags('carts')
+  @Security('token')
   @POST
   createCart(): Promise<Cart> {
     return Carts.create(this.ctx.response.locals.authToken);
@@ -34,6 +35,7 @@ export class CartsController {
 
   @Path(':id')
   @Tags('carts')
+  @Security('token')
   @GET
   getCart(@PathParam('id') id: string): Promise<Cart> {
     return Carts.findById(id, this.ctx.response.locals.authToken);
@@ -48,6 +50,7 @@ export class CartController {
 
   @Path('/lineItems')
   @Tags('carts')
+  @Security('token')
   @POST
   addLineItems(body: IAddLineItem): Promise<Cart> {
     return Carts.addLineItems(
@@ -60,6 +63,7 @@ export class CartController {
 
   @Path('/lineItems')
   @Tags('carts')
+  @Security('token')
   @DELETE
   removeLineItem(body: IRemoveLineItem): Promise<Cart> {
     return Carts.removeLineItem(
@@ -72,6 +76,7 @@ export class CartController {
 
   @Path('/lineItems')
   @Tags('carts')
+  @Security('token')
   @PUT
   changeLineItemQuantity(body: IChangeLineItemQuantity): Promise<Cart> {
     return Carts.changeLineItemQuantity(
@@ -84,6 +89,7 @@ export class CartController {
 
   @Path('/shippingAddress')
   @Tags('carts')
+  @Security('token')
   @PUT
   setShippingAddress(body: Address): Promise<Cart> {
     return Carts.setShippingAddress(
@@ -96,6 +102,7 @@ export class CartController {
 
   @Path('/billingAddress')
   @Tags('carts')
+  @Security('token')
   @PUT
   setBillingAddress(body: Address): Promise<Cart> {
     return Carts.setBillingAddress(
@@ -108,6 +115,7 @@ export class CartController {
 
   @Path('/shippingMethod')
   @Tags('carts')
+  @Security('token')
   @PUT
   setShippingMethod(body: ISetShippingMethod): Promise<Cart> {
     const { shippingMethodId } = body;
