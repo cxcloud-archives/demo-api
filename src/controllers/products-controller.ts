@@ -7,7 +7,7 @@ import {
 
 @Path('/products')
 export class ProductsController {
-  @Path(':id')
+  @Path('/:id')
   @GET
   getProduct(@PathParam('id') id: string): Promise<Product> {
     return Products.findById(id);
