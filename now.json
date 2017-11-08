@@ -1,4 +1,5 @@
 {
   "alias": "demo.cxcloud.xyz",
-  "type": "docker"
+  "type": "docker",
+  "public": false
 }
