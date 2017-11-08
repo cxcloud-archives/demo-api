@@ -1,8 +1,9 @@
 import { POST, Path, Context, ServiceContext } from 'typescript-rest';
-import { Tags } from 'typescript-rest-swagger';
+import { Tags, Security } from 'typescript-rest-swagger';
 import { Customers } from '@cxcloud/facade/dist/commerce';
 import {
-  SignInResult,
+  TokenizedSignInResult,
+  CustomerSignupDraft,
   AnonymousSignInResult
 } from '@cxcloud/facade/dist/sdk/types/customers';
 
@@ -15,10 +16,11 @@ interface ILogin {
 export class AuthController {
   @Context ctx: ServiceContext;
 
-  @Path('/user')
+  @Path('/login')
   @Tags('auth')
+  @Security('token')
   @POST
-  loginUser(body: ILogin): Promise<SignInResult> {
+  loginUser(body: ILogin): Promise<TokenizedSignInResult> {
     const { username, password } = body;
     return Customers.login(
       username,
@@ -27,7 +29,15 @@ export class AuthController {
     );
   }
 
-  @Path('/anonymous')
+  @Path('/register')
+  @Tags('auth')
+  @Security('token')
+  @POST
+  registerUser(body: CustomerSignupDraft): Promise<TokenizedSignInResult> {
+    return Customers.register(body, this.ctx.response.locals.authToken);
+  }
+
+  @Path('/login/anonymous')
   @Tags('auth')
   @POST
   loginAnonymous(): Promise<AnonymousSignInResult> {
