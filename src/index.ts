@@ -36,8 +36,8 @@ if (process.env.NODE_ENV !== 'production') {
     v1,
     path.resolve(__dirname, '../dist/swagger.json'),
     '/api-docs',
-    `localhost:${port}`,
-    ['http']
+    process.env.HOST || `localhost:${port}`,
+    [process.env.HOST ? 'https' : 'http']
   );
 }
 

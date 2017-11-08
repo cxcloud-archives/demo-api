@@ -1,5 +1,8 @@
 {
   "alias": "demo.cxcloud.xyz",
   "type": "docker",
-  "public": false
+  "public": false,
+  "env": {
+    "HOST": "demo.cxcloud.xyz"
+  }
 }
