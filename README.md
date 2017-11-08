@@ -31,9 +31,10 @@ To see the list of available configuration keys, see [CXCloud Facade](https://gi
 To deploy the project's Docker container to `now` service:
 
 ``` sh
-now --docker -e NODE_ENV=production
-now alias [URL copied from previous command] demo.cxcloud.xyz
+$ ENVIRONMENT=production npm run deploy
 ```
+
+The deployment will be available at: [https://demo.cxcloud.xyz](https://demo.cxcloud.xyz)
 
 ## REST API Documentation
 
