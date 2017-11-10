@@ -8,10 +8,7 @@ import {
 } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
 import { Orders } from '@cxcloud/facade/dist/commerce';
-import {
-  Order,
-  PaginatedOrderResult
-} from '@cxcloud/facade/dist/sdk/types/orders';
+import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 
 interface ICreateOrder {
   cartId: string;

@@ -5,7 +5,7 @@ import {
   TokenizedSignInResult,
   CustomerSignupDraft,
   AnonymousSignInResult
-} from '@cxcloud/facade/dist/sdk/types/customers';
+} from '@cxcloud/ct-types/customers';
 
 interface ILogin {
   username: string;

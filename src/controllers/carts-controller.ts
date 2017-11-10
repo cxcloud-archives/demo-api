@@ -10,13 +10,13 @@ import {
 } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
 import { Carts } from '@cxcloud/facade/dist/commerce';
+import { Address } from '@cxcloud/ct-types/common';
 import {
   Cart,
   IAddLineItem,
   IRemoveLineItem,
   IChangeLineItemQuantity
-} from '@cxcloud/facade/dist/sdk/types/carts';
-import { Address } from '@cxcloud/facade/dist/sdk/types/common';
+} from '@cxcloud/ct-types/carts';
 
 interface ISetShippingMethod {
   shippingMethodId: string;

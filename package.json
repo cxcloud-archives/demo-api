@@ -41,6 +41,7 @@
     "typescript-rest-swagger": "0.0.12"
   },
   "devDependencies": {
+    "@cxcloud/ct-types": "^0.1.0",
     "@types/body-parser": "^1.16.5",
     "@types/bunyan": "^1.8.3",
     "@types/config": "0.0.33",

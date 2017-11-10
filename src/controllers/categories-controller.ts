@@ -1,7 +1,7 @@
 import { GET, Path } from 'typescript-rest';
 import { Tags } from 'typescript-rest-swagger';
 import { Categories } from '@cxcloud/facade/dist/commerce';
-import { Category } from '@cxcloud/facade/dist/sdk/types/categories';
+import { Category } from '@cxcloud/ct-types/categories';
 
 @Path('/categories')
 export class CategoriesController {
