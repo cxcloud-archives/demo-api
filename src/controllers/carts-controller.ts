@@ -14,7 +14,6 @@ import { Address } from '@cxcloud/ct-types/common';
 import {
   Cart,
   IAddLineItem,
-  IRemoveLineItem,
   IChangeLineItemQuantity
 } from '@cxcloud/ct-types/carts';
 
