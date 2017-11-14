@@ -69,15 +69,15 @@ export class CartController {
     );
   }
 
-  @Path('/lineItems')
+  @Path('/lineItems/:lineItemId')
   @Tags('carts')
   @Security('token')
   @DELETE
-  removeLineItem(body: IRemoveLineItem): Promise<Cart> {
+  removeLineItem(@PathParam('lineItemId') lineItemId: string): Promise<Cart> {
     return Carts.removeLineItem(
       this.cartId,
       this.cartVersion,
-      body.lineItemId,
+      lineItemId,
       this.ctx.response.locals.authToken
     );
   }
