@@ -33,6 +33,14 @@ export class CartsController {
     return Carts.create(this.ctx.response.locals.authToken);
   }
 
+  @Path('/active')
+  @Tags('carts')
+  @Security('token')
+  @GET
+  getActiveCart(@PathParam('id') id: string): Promise<Cart> {
+    return Carts.findActiveCart(this.ctx.response.locals.authToken);
+  }
+
   @Path(':id')
   @Tags('carts')
   @Security('token')
