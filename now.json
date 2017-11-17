@@ -1,5 +1,5 @@
 {
-  "alias": "demo.cxcloud.xyz",
+  "alias": "api.cxcloud.xyz",
   "type": "docker",
   "public": false,
   "env": {
