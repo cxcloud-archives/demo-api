@@ -63,6 +63,6 @@ process.on('SIGTERM', () => {
     server.stop();
   }
   setTimeout(() => {
-    process.exit(1);
+    process.exit(0);
   }, 5000);
 });
