@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/smilehouse/cxcloud-demo-facade#readme",
   "dependencies": {
-    "@cxcloud/facade": "^1.4.0",
+    "@buttercup/generator": "^1.0.0",
+    "@cxcloud/facade": "^1.4.2",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
     "config": "^1.27.0",

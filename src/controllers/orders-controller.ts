@@ -9,6 +9,7 @@ import {
 import { Tags, Security } from 'typescript-rest-swagger';
 import { Orders } from '@cxcloud/facade/dist/commerce';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
+import { generateOrderNumber } from '../utils/random';
 
 interface ICreateOrder {
   cartId: string;
@@ -22,11 +23,12 @@ export class OrdersController {
   @Tags('orders')
   @Security('token')
   @POST
-  createOrder(body: ICreateOrder): Promise<Order> {
+  async createOrder(body: ICreateOrder): Promise<Order> {
     const { cartId, cartVersion } = body;
     return Orders.create(
       cartId,
       cartVersion,
+      await generateOrderNumber(),
       this.ctx.response.locals.authToken
     );
   }
