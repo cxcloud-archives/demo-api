@@ -1,6 +1,6 @@
-# CXCloud Facade Demo
+# CXCloud API Accelerator
 
-This repository uses [CXCloud Facade](https://github.com/cxcloud/cxcloud-facade) module and shows off it's capabilities. You can use this as a starting point for your CXCloud projects.
+This repository uses [CXCloud Core Services](https://github.com/cxcloud/core-services) module and shows off it's capabilities. You can use this as a starting point for your CXCloud projects.
 
 ## Configuration
 
@@ -24,7 +24,7 @@ If a config file for current environment doesn't exist, the `default.json` file 
 
 Fore more information about the configuration system, please see [`node-config`](https://github.com/lorenwest/node-config) module.
 
-To see the list of available configuration keys, see [CXCloud Facade](https://github.com/cxcloud/cxcloud-facade).
+To see the list of available configuration keys, see [CXCloud Core Services](https://github.com/cxcloud/core-services).
 
 ## Deploy
 
