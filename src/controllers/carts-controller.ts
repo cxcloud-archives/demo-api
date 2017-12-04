@@ -9,7 +9,7 @@ import {
   ServiceContext
 } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
-import { Carts } from '@cxcloud/facade/dist/commerce';
+import { Carts } from '@cxcloud/core/dist/commerce';
 import { Address } from '@cxcloud/ct-types/common';
 import {
   Cart,

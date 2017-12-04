@@ -1,6 +1,6 @@
 import { GET, Path, PathParam, Context, ServiceContext } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
-import { Content } from '@cxcloud/facade';
+import { Content } from '@cxcloud/core';
 
 @Path('/content')
 export class ContentController {

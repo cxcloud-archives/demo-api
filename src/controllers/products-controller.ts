@@ -1,6 +1,6 @@
 import { GET, Path, PathParam } from 'typescript-rest';
 import { Tags } from 'typescript-rest-swagger';
-import { Products } from '@cxcloud/facade/dist/commerce';
+import { Products } from '@cxcloud/core/dist/commerce';
 import { Product, PaginatedProductResult } from '@cxcloud/ct-types/products';
 
 @Path('/products')

@@ -7,7 +7,7 @@ import {
   ServiceContext
 } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
-import { Orders } from '@cxcloud/facade/dist/commerce';
+import { Orders } from '@cxcloud/core/dist/commerce';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 import { generateOrderNumber } from '../utils/random';
 

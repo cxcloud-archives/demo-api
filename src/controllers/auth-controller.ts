@@ -1,6 +1,6 @@
 import { POST, Path, Context, ServiceContext } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
-import { Customers } from '@cxcloud/facade/dist/commerce';
+import { Customers } from '@cxcloud/core/dist/commerce';
 import {
   TokenizedSignInResult,
   CustomerSignupDraft,
