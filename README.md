@@ -1,5 +1,7 @@
 # CXCloud API Accelerator
 
+[![Build Status](https://travis-ci.org/cxcloud/api-accelerator.svg?branch=master)](https://travis-ci.org/cxcloud/api-accelerator)
+
 This repository uses [CXCloud Core Services](https://github.com/cxcloud/core-services) module and shows off it's capabilities. You can use this as a starting point for your CXCloud projects.
 
 ## Configuration
@@ -10,11 +12,7 @@ To see the list of available configuration keys, see [CXCloud Core Services](htt
 
 ## Deploy
 
-This project's master branch is automatically deoployed and is available on [https://demo.cxcloud.xyz/api/](https://demo.cxcloud.xyz/api/). However to deploy the project's Docker container manually to `now` service:
-
-``` sh
-$ ENVIRONMENT=production npm run deploy -- --token=YOUR_NOW_TOKEN
-```
+This project's master branch is automatically deoployed and is available on [https://demo.cxcloud.xyz/api/](https://demo.cxcloud.xyz/api/).
 
 ## REST API Documentation
 
