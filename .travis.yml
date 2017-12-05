@@ -5,6 +5,8 @@ script:
   - npm run build
 install:
   - npm install --package-lock-only
+before_deploy:
+  - scripts/install-git-crypt.sh
 deploy:
   provider: script
   script: scripts/deploy.sh
