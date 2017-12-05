@@ -7,6 +7,6 @@ install:
   - npm install --package-lock-only
 deploy:
   provider: script
-  script: npm run deploy -- --token=$NOW_TOKEN --team=$NOW_TEAM
+  script: git reset --hard HEAD && npm run deploy -- --token=$NOW_TOKEN --team=$NOW_TEAM
   on:
     branch: master
