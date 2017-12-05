@@ -61,4 +61,5 @@ typings/
 dist
 
 # Encryption
+git-crypt
 git-crypt.key
