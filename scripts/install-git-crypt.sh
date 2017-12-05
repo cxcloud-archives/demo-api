@@ -2,7 +2,6 @@
 set -ev
 set -o pipefail
 
-sudo apt-get install -y libssl-dev
 cd /tmp
 curl -Lo git-crypt.zip https://github.com/AGWA/git-crypt/archive/master.zip
 unzip git-crypt.zip
