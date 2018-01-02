@@ -10,6 +10,14 @@ This project uses [`node-config`](lorenwest/node-config) for configuration and [
 
 To see the list of available configuration keys, see [CXCloud Core Services](https://github.com/cxcloud/core-services).
 
+After cloning the repo, follow [these instructions](https://github.com/cxcloud/api-accelerator/wiki/GPG-&-Git-Crypt-Installation) to install the required tools and then:
+
+```sh
+$ git-crypt unlock
+```
+
+Please contact the team to have your public gpg key to the project so you can unlock the configuration files.
+
 ## Deploy
 
 This project's master branch is automatically deoployed and is available on [https://demo.cxcloud.xyz/api/](https://demo.cxcloud.xyz/api/).
