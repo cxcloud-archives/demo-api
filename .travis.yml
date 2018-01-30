@@ -7,8 +7,8 @@ addons:
       - libssl-dev
 script:
   - npm run build
-install:
-  - npm install --package-lock-only
+#install:
+#  - npm install --package-lock-only
 before_deploy:
   - scripts/install-git-crypt.sh
 deploy:
