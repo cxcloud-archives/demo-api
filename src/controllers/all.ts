@@ -5,3 +5,4 @@ export * from './categories-controller';
 export * from './auth-controller';
 export * from './shipping-controller';
 export * from './content-controller';
+export * from './admin-controller';

@@ -7,7 +7,7 @@ import {
   AnonymousSignInResult
 } from '@cxcloud/ct-types/customers';
 
-interface ILogin {
+export interface ILogin {
   username: string;
   password: string;
 }
