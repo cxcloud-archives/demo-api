@@ -17,7 +17,7 @@ import {
 } from '@cxcloud/ct-types/customers';
 import { UpdateAction } from '@cxcloud/ct-types/common';
 import { PaginatedOrderResult, Order } from '@cxcloud/ct-types/orders';
-import { ILogin } from 'src/controllers/auth-controller';
+import { ILogin } from './auth-controller';
 
 interface IEntityUpdate {
   actions: UpdateAction[];
