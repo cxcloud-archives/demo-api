@@ -10,7 +10,11 @@ import {
 } from 'typescript-rest';
 import { Tags, Security } from 'typescript-rest-swagger';
 import { Orders, Customers, Users } from '@cxcloud/core/dist/commerce';
-import { OAuthToken } from '@cxcloud/ct-types/customers';
+import {
+  OAuthToken,
+  Customer,
+  PaginatedCustomerResult
+} from '@cxcloud/ct-types/customers';
 import { UpdateAction } from '@cxcloud/ct-types/common';
 import { PaginatedOrderResult, Order } from '@cxcloud/ct-types/orders';
 import { ILogin } from 'src/controllers/auth-controller';
@@ -78,6 +82,59 @@ export class OrdersAdminController {
     return Orders.remove(
       orderId,
       orderVersion,
+      this.ctx.response.locals.authToken
+    );
+  }
+}
+
+@Path('/admin/customers')
+export class CustomersAdminController {
+  @Context ctx: ServiceContext;
+
+  @Tags('customers', 'admin')
+  @Security('token')
+  @GET
+  getCustomers(): Promise<PaginatedCustomerResult> {
+    return Customers.fetchAll(this.ctx.response.locals.authToken);
+  }
+
+  @Path('/:id')
+  @Tags('customers', 'admin')
+  @Security('token')
+  @GET
+  getCustomerById(@PathParam('id') customerId: string): Promise<Customer> {
+    return Customers.findById(customerId, this.ctx.response.locals.authToken);
+  }
+
+  @Path('/:id/:version')
+  @Tags('customers', 'admin')
+  @Security('token')
+  @PUT
+  updateCustomer(
+    @PathParam('id') customerId: string,
+    @PathParam('version') customerVersion: number,
+    body: IEntityUpdate
+  ): Promise<Customer> {
+    const { actions } = body;
+    return Customers.update(
+      customerId,
+      customerVersion,
+      actions,
+      this.ctx.response.locals.authToken
+    );
+  }
+
+  @Path('/:id/:version')
+  @Tags('customers', 'admin')
+  @Security('token')
+  @DELETE
+  deleteCustomer(
+    @PathParam('id') customerId: string,
+    @PathParam('version') customerVersion: number
+  ): Promise<Customer> {
+    return Customers.remove(
+      customerId,
+      customerVersion,
       this.ctx.response.locals.authToken
     );
   }

@@ -31,7 +31,7 @@
   "homepage": "https://github.com/cxcloud/api-accelerator#readme",
   "dependencies": {
     "@buttercup/generator": "^1.0.1",
-    "@cxcloud/core": "^1.7.1",
+    "@cxcloud/core": "^1.8.0",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
     "config": "^1.27.0",
@@ -42,7 +42,7 @@
     "typescript-rest-swagger": "0.0.12"
   },
   "devDependencies": {
-    "@cxcloud/ct-types": "^0.1.7",
+    "@cxcloud/ct-types": "^0.1.8",
     "@types/body-parser": "^1.16.5",
     "@types/bunyan": "^1.8.3",
     "@types/config": "0.0.33",
