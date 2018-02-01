@@ -1,7 +1,8 @@
-import { GET, Path, PathParam } from 'typescript-rest';
+import { GET, Path, PathParam, QueryParam } from 'typescript-rest';
 import { Tags } from 'typescript-rest-swagger';
 import { Products } from '@cxcloud/core/dist/commerce';
 import { Product, PaginatedProductResult } from '@cxcloud/ct-types/products';
+import { getQueryOptions } from '../utils/query';
 
 @Path('/products')
 export class ProductsController {
@@ -16,8 +17,15 @@ export class ProductsController {
   @Tags('products')
   @GET
   getProductsByCategory(
-    @PathParam('categoryId') categoryId: string
+    @PathParam('categoryId') categoryId: string,
+    @QueryParam('page') page?: number,
+    @QueryParam('perPage') perPage?: number,
+    @QueryParam('sortPath') sortPath?: string,
+    @QueryParam('ascending') ascending?: boolean
   ): Promise<PaginatedProductResult> {
-    return Products.findByCategoryId(categoryId);
+    return Products.findByCategoryId(
+      categoryId,
+      getQueryOptions(page, perPage, sortPath, ascending)
+    );
   }
 }

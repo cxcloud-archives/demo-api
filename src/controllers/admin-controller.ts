@@ -105,8 +105,16 @@ export class CustomersAdminController {
   @Tags('customers', 'admin')
   @Security('token')
   @GET
-  getCustomers(): Promise<PaginatedCustomerResult> {
-    return Customers.fetchAll(this.ctx.response.locals.authToken);
+  getCustomers(
+    @QueryParam('page') page?: number,
+    @QueryParam('perPage') perPage?: number,
+    @QueryParam('sortPath') sortPath?: string,
+    @QueryParam('ascending') ascending?: boolean
+  ): Promise<PaginatedCustomerResult> {
+    return Customers.fetchAll(
+      this.ctx.response.locals.authToken,
+      getQueryOptions(page, perPage, sortPath, ascending)
+    );
   }
 
   @Path('/:id')
