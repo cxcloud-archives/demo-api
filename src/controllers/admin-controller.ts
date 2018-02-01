@@ -5,6 +5,7 @@ import {
   PUT,
   Path,
   PathParam,
+  QueryParam,
   Context,
   ServiceContext
 } from 'typescript-rest';
@@ -18,6 +19,7 @@ import {
 import { UpdateAction } from '@cxcloud/ct-types/common';
 import { PaginatedOrderResult, Order } from '@cxcloud/ct-types/orders';
 import { ILogin } from './auth-controller';
+import { getQueryOptions } from '../utils/query';
 
 interface IEntityUpdate {
   actions: UpdateAction[];
@@ -41,8 +43,17 @@ export class OrdersAdminController {
   @Tags('orders', 'admin')
   @Security('token')
   @GET
-  getOrders(): Promise<PaginatedOrderResult> {
-    return Orders.fetchAll(this.ctx.response.locals.authToken, true);
+  getOrders(
+    @QueryParam('page') page?: number,
+    @QueryParam('perPage') perPage?: number,
+    @QueryParam('sortPath') sortPath?: string,
+    @QueryParam('ascending') ascending?: boolean
+  ): Promise<PaginatedOrderResult> {
+    return Orders.fetchAll(
+      this.ctx.response.locals.authToken,
+      true,
+      getQueryOptions(page, perPage, sortPath, ascending)
+    );
   }
 
   @Path('/:id')
@@ -94,8 +105,16 @@ export class CustomersAdminController {
   @Tags('customers', 'admin')
   @Security('token')
   @GET
-  getCustomers(): Promise<PaginatedCustomerResult> {
-    return Customers.fetchAll(this.ctx.response.locals.authToken);
+  getCustomers(
+    @QueryParam('page') page?: number,
+    @QueryParam('perPage') perPage?: number,
+    @QueryParam('sortPath') sortPath?: string,
+    @QueryParam('ascending') ascending?: boolean
+  ): Promise<PaginatedCustomerResult> {
+    return Customers.fetchAll(
+      this.ctx.response.locals.authToken,
+      getQueryOptions(page, perPage, sortPath, ascending)
+    );
   }
 
   @Path('/:id')

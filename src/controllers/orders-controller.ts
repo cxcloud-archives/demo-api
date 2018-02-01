@@ -3,6 +3,7 @@ import {
   GET,
   Path,
   PathParam,
+  QueryParam,
   Context,
   ServiceContext
 } from 'typescript-rest';
@@ -10,6 +11,7 @@ import { Tags, Security } from 'typescript-rest-swagger';
 import { Orders } from '@cxcloud/core/dist/commerce';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
 import { generateOrderNumber } from '../utils/random';
+import { getQueryOptions } from '../utils/query';
 
 interface ICreateOrder {
   cartId: string;
@@ -36,8 +38,17 @@ export class OrdersController {
   @Tags('orders')
   @Security('token')
   @GET
-  getOrders(): Promise<PaginatedOrderResult> {
-    return Orders.fetchAll(this.ctx.response.locals.authToken);
+  getOrders(
+    @QueryParam('page') page?: number,
+    @QueryParam('perPage') perPage?: number,
+    @QueryParam('sortPath') sortPath?: string,
+    @QueryParam('ascending') ascending?: boolean
+  ): Promise<PaginatedOrderResult> {
+    return Orders.fetchAll(
+      this.ctx.response.locals.authToken,
+      false,
+      getQueryOptions(page, perPage, sortPath, ascending)
+    );
   }
 
   @Path('/:id')
