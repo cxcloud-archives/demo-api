@@ -5,7 +5,7 @@ export async function generateOrderNumber() {
     const config = getConfig();
     config.randomCharacters.length = 5;
     config.randomCharacters.enabledCharacterSets = ['DIGITS'];
-    return await generatePassword(config);
+    return `CX-${await generatePassword(config)}`;
   } catch (err) {}
   return null;
 }
