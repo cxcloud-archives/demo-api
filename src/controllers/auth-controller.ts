@@ -6,6 +6,7 @@ import {
   CustomerSignupDraft,
   AnonymousSignInResult
 } from '@cxcloud/ct-types/customers';
+import { generateRandomNumber } from '../utils/random';
 
 export interface ILogin {
   username: string;
@@ -33,7 +34,13 @@ export class AuthController {
   @Tags('auth')
   @Security('token')
   @POST
-  registerUser(body: CustomerSignupDraft): Promise<TokenizedSignInResult> {
+  async registerUser(
+    body: CustomerSignupDraft
+  ): Promise<TokenizedSignInResult> {
+    body = {
+      customerNumber: (await generateRandomNumber('CXC-')) || undefined,
+      ...body
+    };
     return Customers.register(body, this.ctx.response.locals.authToken);
   }
 
