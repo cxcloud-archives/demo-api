@@ -10,7 +10,7 @@ import {
 import { Tags, Security } from 'typescript-rest-swagger';
 import { Orders } from '@cxcloud/core/dist/commerce';
 import { Order, PaginatedOrderResult } from '@cxcloud/ct-types/orders';
-import { generateOrderNumber } from '../utils/random';
+import { generateRandomNumber } from '../utils/random';
 import { getQueryOptions } from '../utils/query';
 
 interface ICreateOrder {
@@ -30,7 +30,7 @@ export class OrdersController {
     return Orders.create(
       cartId,
       cartVersion,
-      await generateOrderNumber(),
+      await generateRandomNumber('CXO-'),
       this.ctx.response.locals.authToken
     );
   }
