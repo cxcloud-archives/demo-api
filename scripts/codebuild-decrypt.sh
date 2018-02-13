@@ -1,13 +1,17 @@
 #!/bin/bash
+
+echo $CODEBUILD_SRC_DIR
+
 cd /tmp
 curl -Lo git-crypt.zip https://github.com/AGWA/git-crypt/archive/master.zip
 unzip git-crypt.zip
 cd git-crypt-master
 make
-install git-crypt /usr/bin
+make install
 
 cd $CODEBUILD_SRC_DIR
-openssl aes-256-cbc -d -a -in git-crypt.key2.enc -out git-crypt.key
-git stash
-/usr/local/git-crypt unlock git-crypt.key
+git init && git add . && git commit -m "Initial"
+openssl aes-256-cbc -d -a -in git-crypt.key2.enc -out git-crypt.key -pass pass:"$GITCRYPT_PASS"
+git-crypt unlock git-crypt.key
 rm git-crypt.key
+rm -rf .git
