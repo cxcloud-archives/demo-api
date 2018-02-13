@@ -10,7 +10,10 @@ make
 make install
 
 cd $CODEBUILD_SRC_DIR
-git init && git add . && git commit -m "Initial"
+git init
+git config user.email "build@cxcloud.com"
+git config user.name "CXCloud"
+git add . && git commit -m "Initial"
 openssl aes-256-cbc -d -a -in git-crypt.key2.enc -out git-crypt.key -pass pass:"$GITCRYPT_PASS"
 git-crypt unlock git-crypt.key
 rm git-crypt.key
