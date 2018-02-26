@@ -22,7 +22,7 @@ export class SearchController {
     @QueryParam('filters') filters?: string,
     @QueryParam('facets') facets?: string,
     @QueryParam('hitsPerPage') hitsPerPage?: number,
-    @QueryParam('attributesToRetrieve') attributesToRetrieve?: string
+    @QueryParam('attributesToRetrieve') attributesToRetrieve?: string[]
   ) {
     return Search.searchIndex(indexName, this.ctx.request.query);
   }

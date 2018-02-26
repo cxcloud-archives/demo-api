@@ -41,6 +41,7 @@
     "express-api-error-handler": "^1.1.0"
   },
   "devDependencies": {
+    "@types/algoliasearch": "^3.24.9",
     "@types/body-parser": "^1.16.5",
     "@types/bunyan": "^1.8.3",
     "@types/config": "0.0.33",
