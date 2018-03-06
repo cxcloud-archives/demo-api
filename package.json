@@ -8,7 +8,7 @@
     "deploy": "now -e NODE_ENV=$ENVIRONMENT && now alias",
     "start": "ts-node src/index.ts | bunyan",
     "start:production": "node dist/index.js",
-    "dev": "nodemon --ignore dist --ext js,ts,json --exec \"'ts-node' src/index.ts | bunyan\"",
+    "dev": "nodemon",
     "swagger": "swaggerGen -c ./swagger.config.json",
     "format": "prettier --write 'src/**/*.ts'",
     "precommit": "lint-staged"
@@ -31,8 +31,8 @@
   "homepage": "https://github.com/cxcloud/api-accelerator#readme",
   "dependencies": {
     "@buttercup/generator": "^1.0.1",
-    "@cxcloud/core": "^1.10.1",
-    "@cxcloud/ct-types": "^0.3.0",
+    "@cxcloud/core": "^1.10.2",
+    "@cxcloud/ct-types": "^0.3.1",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
     "config": "^1.27.0",
@@ -50,7 +50,7 @@
     "@types/node": "^8.0.45",
     "husky": "^0.14.3",
     "lint-staged": "^4.3.0",
-    "nodemon": "^1.12.1",
+    "nodemon": "^1.17.1",
     "prettier": "^1.7.4",
     "ts-node": "^3.3.0",
     "typescript": "^2.6.2",
