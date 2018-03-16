@@ -11,6 +11,7 @@ import controllers from './controllers';
 const { errorHandler } = require('express-api-error-handler');
 
 const app = express();
+const host = config.has('host') ? config.get<string>('host') : null;
 const port = config.get<number>('port') || 3000;
 let server: any;
 
@@ -34,8 +35,8 @@ Server.swagger(
   v1,
   path.resolve(__dirname, '../dist/swagger.json'),
   '/api-docs',
-  process.env.HOST || `localhost:${port}`,
-  [process.env.HOST ? 'https' : 'http']
+  host || `localhost:${port}`,
+  [host ? 'https' : 'http']
 );
 
 app.use('/api/v1', v1);
