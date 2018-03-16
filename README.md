@@ -26,7 +26,7 @@ This project's master branch is automatically deployed and is available on [http
 
 If you have run the project with a `NODE_ENV` set to any value other than `production`, a Swagger API Documentation will be available under the `/api/v1/api-docs` URL.
 
-## Use in another project
+## Copy repository
 
 1. Create clone of this repository and navigate to it:
 ```sh
