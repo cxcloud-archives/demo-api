@@ -7,7 +7,7 @@
     "build": "tsc && npm run swagger",
     "start": "ts-node src/index.ts | bunyan",
     "start:production": "node dist/index.js",
-    "dev": "nodemon",
+    "dev": "npm run build && nodemon",
     "swagger": "swaggerGen -c ./swagger.config.json",
     "format": "prettier --write 'src/**/*.ts'",
     "precommit": "lint-staged"
